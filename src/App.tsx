@@ -17,10 +17,15 @@ function App() {
   const visibleExpense = selectedCategory
     ? expenses.filter((e) => e.category === selectedCategory)
     : expenses;
+
   return (
     <div>
       <div className="mb-5">
-        <ExpenseForm></ExpenseForm>
+        <ExpenseForm
+          onSubmit={(expense) =>
+            setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
+          }
+        ></ExpenseForm>
       </div>
       <div className="mb-3">
         <ExpenseFilter
